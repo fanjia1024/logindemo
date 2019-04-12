@@ -6,30 +6,30 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    wx.login({
-      success: res => {
-        console.log(res.code+'code')
-        // var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=wxce796590a9f0863a&secret=e6322939783531c9ba49388a1c418a6c&js_code=' + res.code + '&grant_type=authorization_code';
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: 'http://127.0.0.1:8088/demo/wechat/index?code='+res.code,
-          method: "GET",
+    // // 登录
+    // wx.login({
+    //   success: res => {
+    //     console.log(res.code+'code')
+    //     // var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=wxce796590a9f0863a&secret=e6322939783531c9ba49388a1c418a6c&js_code=' + res.code + '&grant_type=authorization_code';
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //     wx.request({
+    //       url: 'http://127.0.0.1:8088/demo/wechat/index?code='+res.code,
+    //       method: "GET",
           
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success: function (res) {
-            console.log(res.data);
-            var obj = {};
-                obj.openid = res.data.openid;
-                obj.expires_in = Date.now() + res.data.expires_in;
-                console.log(obj);
+    //       header: {
+    //         'content-type': 'application/json' // 默认值
+    //       },
+    //       success: function (res) {
+    //         console.log(res.data);
+    //         var obj = {};
+    //             obj.openid = res.data.openid;
+    //             obj.expires_in = Date.now() + res.data.expires_in;
+    //             console.log(obj);
             
-          }
-        })
-      }
-    })
+    //       }
+    //     })
+    //   }
+    // })
     // 获取用户信息
     wx.getSetting({
       success: res => {
