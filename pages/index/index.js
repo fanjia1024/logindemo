@@ -31,7 +31,7 @@ Page({
             obj.session_key = Date.now() + res.data.session_key;
             console.log(obj);
             wx.navigateTo({
-              url: '../logs/logs'
+              url: '../userLogin/login'
             })
 
           }
